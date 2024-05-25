@@ -51,9 +51,10 @@ double* euler_explicite(unsigned int n, double u0, double a, double b,
     return sol;
 }
 
-/// @brief Calcule la solution de l'équation u'=phi(x, u(x))
-///        selon Euler implicite avec n points et le vecteur
-///        d'initialisation u0 sur l'intervalle [a, b]
+/// @brief Calcule la solution de l'équation u=h*phi(x, u(x))
+///        selon la methode de Newton avec une certaine  
+///        tolérance et un nombre d'itération max si Newton ne 
+///        converge pas.
 /// @param[in] n période ou encore le nombre de points dans le 
 ///            schéma d'Euler implicite.
 /// @param[in] u0 point initialisant le schéma d'Euler implicite
