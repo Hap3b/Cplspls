@@ -15,7 +15,7 @@ void print_matrix(double** , int);
 double trace (double** , int);
 
 
-/// Driver principal pour le calcul de la tace d'une matrice 
+/// Driver principal pour le calcul de la trace d'une matrice 
 int main()
 {
   int i, j, n;
@@ -25,7 +25,7 @@ int main()
   cout << endl << "Enter the Dimension for a square matrix: " << flush;
   cin >> n;
   matrix = initialization(n);
-  for(i = 1 ; i < n ; i++)
+  for(i = 0 ; i < n ; i++)
       matrix[i] =  fill_vector(matrix[i] , n);
   sum = trace(matrix , n);
   print_matrix(matrix , n);

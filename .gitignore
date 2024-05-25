@@ -9,3 +9,5 @@ install_manifest.txt
 compile_commands.json
 CTestTestfile.cmake
 _deps
+tp1/CPPMA-Spring2023-Lab/build/
+tp1/CPPMA-Spring2023-Lab/.vscode/tasks.json
