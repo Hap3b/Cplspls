@@ -13,3 +13,4 @@ tp1/CPPMA-Spring2023-Lab/build/
 tp1/CPPMA-Spring2023-Lab/.vscode/tasks.json
 tp2/.vscode/
 tp2/.gmon.out/
+*.vscode*
