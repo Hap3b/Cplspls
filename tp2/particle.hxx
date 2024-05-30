@@ -35,4 +35,4 @@ public:
     void setFy(double fy) {this->fy_ = fy;};
 };
 
-void fGravitationnal(std::deque<Particle> particles);
+void fGravitationnal(std::deque<Particle> &particles);

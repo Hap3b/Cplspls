@@ -100,7 +100,7 @@ void speedCollections(){
     }
 }
 
-void stromerVerlet(std::deque<Particle> particles,
+void stromerVerlet(std::deque<Particle> &particles,
                     std::deque<double> f_old_x,
                     std::deque<double> f_old_y)
 {
@@ -142,7 +142,7 @@ void stromerVerlet(std::deque<Particle> particles,
     }
 }
 
-void fGravitationnal(std::deque<Particle> particles){
+void fGravitationnal(std::deque<Particle> &particles){
     for (auto it1 = particles.begin(); it1 != particles.end(); it1++)
     {
         double m1 = it1->getMass();
@@ -168,10 +168,10 @@ int main(){
     double mass_earth   = 3e-6;
     double mass_jupyter = 9.55e-4;
     double mass_haley   = 1e-14;
-    Particle sun         = Particle(0, 0, 0, 0, 0, 0, 0, mass_sun, "star");
-    Particle earth       = Particle(1, 0, 1, -1, 0, 0, 0, mass_earth, "planet");
-    Particle jupyter     = Particle(2, 0, 5.36, -0.425, 0, 0, 0, mass_jupyter, "planet");
-    Particle halley      = Particle(3, 34.75, 0, 0, 0.0296, 0, 0, mass_haley, "comet");
+    Particle sun        = Particle(0, 0, 0, 0, 0, 0, 0, mass_sun, "star");
+    Particle earth      = Particle(1, 0, 1, -1, 0, 0, 0, mass_earth, "planet");
+    Particle jupyter    = Particle(2, 0, 5.36, -0.425, 0, 0, 0, mass_jupyter, "planet");
+    Particle halley     = Particle(3, 34.75, 0, 0, 0.0296, 0, 0, mass_haley, "comet");
     std::deque<Particle> system;
     system.push_back(sun); system.push_back(earth); system.push_back(jupyter); system.push_back(halley);
     std::deque<double> f_old_x;
