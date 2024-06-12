@@ -3,6 +3,8 @@
 
 #include <vector>
 #include <iostream>
+#include <cassert>
+#include <cmath>
 
 using namespace std;
 
@@ -13,15 +15,15 @@ private:
     unsigned int dim_;
 
 public:
-    Vector(vector<double> x, unsigned int dim);
+    Vector(vector<double> &x, unsigned int dim);
     Vector(const Vector &v);
     Vector();
     ~Vector();
 
-    Vector operator*(double lamda);
+    Vector operator*(double lamda) const;
     friend Vector operator*(double lamda, const Vector &v);
-    Vector operator+(const Vector &v);
-    Vector operator-(const Vector &v);
+    Vector operator+(const Vector &v) const;
+    Vector operator-(const Vector &v) const;
 
     Vector &operator+=(const Vector &v);
     Vector &operator-=(const Vector &v);
@@ -33,11 +35,11 @@ public:
 
     friend ostream &operator<<(ostream &out, const Vector &v);
 
-    double getX(unsigned int i) const {return this->x_[i];};
-    unsigned int getDim() const {return this->dim_;};
-    void setX(unsigned int i, double val) {this->x_[i] = val;};
+    double getX(unsigned int i) const {return x_[i];};
+    unsigned int getDim() const {return dim_;};
+    void setX(unsigned int i, double val) { x_[i] = val;};
 
-    double distance(Vector *v);
+    double distance(const Vector &v) const;
 };
 
 #endif

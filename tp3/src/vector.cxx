@@ -1,13 +1,10 @@
 #include "vector.hxx"    
-#include <cassert>
-#include <cmath>
 
 using namespace std;
 
-Vector::Vector(vector<double> x, unsigned int dim){
+Vector::Vector(vector<double> &x, unsigned int dim)
+    : x_(x), dim_(dim) {
     assert(x.size()==dim);
-    this->x_   = x;
-    this->dim_ = dim;
 }
 
 Vector::Vector(const Vector &v) {
@@ -19,19 +16,19 @@ Vector::Vector() : dim_(0) {}
 
 Vector::~Vector(){}
 
-Vector Vector::operator*(double lamda){
+Vector Vector::operator*(double lamda) const{
     Vector result = *this;
-    for (size_t i = 0; i < this->dim_; i++)
+    for (size_t i = 0; i < dim_; i++)
     {
         result.setX(i, result.getX(i)*lamda);
     }
     return result;
 }
 
-Vector Vector::operator+(const Vector &v){
-    assert(v.dim_ == this->dim_);
+Vector Vector::operator+(const Vector &v) const{
+    assert(v.dim_ == dim_);
     Vector result = *this;
-    for (size_t i = 0; i < this->dim_; i++)
+    for (size_t i = 0; i < dim_; i++)
     {
         result.setX(i, result.getX(i)+v.getX(i));
     }
@@ -40,46 +37,47 @@ Vector Vector::operator+(const Vector &v){
 
 Vector& Vector::operator=(const Vector &v){
     if (this != &v){   
-        this->x_   = v.x_;
-        this->dim_ = v.dim_;
+        x_   = v.x_;
+        dim_ = v.dim_;
     }
     return *this;
 }
 
-Vector Vector::operator-(const Vector &v){
-    assert(v.dim_ == this->dim_);
+Vector Vector::operator-(const Vector &v) const{
+    assert(v.dim_ == dim_);
     Vector result = *this;
-    for (size_t i = 0; i < this->dim_; i++){
+    for (size_t i = 0; i < dim_; i++){
         result.setX(i, result.getX(i)-v.getX(i));
     }
     return result;
 }
 
 Vector& Vector::operator+=(const Vector &v){
-    assert(v.getDim()==this->getDim());
-    for (size_t i = 0; i < this->getDim(); i++)
+    assert(v.getDim() == dim_);
+    for (size_t i = 0; i < dim_; i++)
     {
-        this->setX(i, this->getX(i)+v.getX(i));
+        x_[i] += v.getX(i);
     }
     return *this;
 }
 
 Vector& Vector::operator-=(const Vector &v){
-    assert(v.getDim()==this->getDim());
-    for (size_t i = 0; i < this->getDim(); i++)
+    assert(v.getDim() == dim_);
+    for (size_t i = 0; i < dim_; i++)
     {
-        this->setX(i, this->getX(i)-v.getX(i));
+        x_[i] += v.getX(i);
     }
-    return *this;}
+    return *this;
+}
 
 bool Vector::operator==(const Vector &v) const {
-    if (this->dim_ != v.dim_)
+    if (dim_ != v.dim_)
     {
         return false;
     }
-    for (size_t i = 0; i < this->dim_; i++)
+    for (size_t i = 0; i < dim_; i++)
     {
-        if (v.x_[i] != this->x_[i])
+        if (v.x_[i] != x_[i])
         {
             return false;
         }
@@ -110,11 +108,11 @@ Vector operator*(double lamda, const Vector &v){
     return result;
 }
 
-double Vector::distance(Vector *v){
+double Vector::distance(const Vector &v) const{
     double dst = 0;
-    for (size_t i = 0; i < this->dim_; i++)
+    for (size_t i = 0; i < dim_; i++)
     {
-        dst += (this->x_[i]-v->getX(i))*(this->x_[i]-v->getX(i));
+        dst += pow(x_[i]-v.getX(i), 2);
     }
     dst = sqrt(dst);
     return dst;
