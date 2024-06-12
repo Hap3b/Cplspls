@@ -1,9 +1,8 @@
-#include "vecteur.hxx"
+#include "vector.hxx"
 
 int main(){
-  Vecteur v1;
-  Vecteur v2;
-  ....
+  Vector v1;
+  Vector v2;
   std::cout<<v1<<std::endl;
   std::cout<<v2<<std::endl;
 

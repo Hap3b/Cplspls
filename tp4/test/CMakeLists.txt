@@ -1,5 +1,5 @@
 # Créer un executable à partir de fichiers sources
-add_executable(test_1  test_1.cxx)
+add_executable(test_1  test_point.cxx)
 
 # Fait le lien avec la bibliothèque créée précedemment
 # Les entêtes sont automatiquement détectés.
